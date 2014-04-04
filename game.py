@@ -69,5 +69,5 @@ bb.randomize()
 #bb.check_win()
 #print bb
 
-g = game(AI.random_bot(), AI.random_bot())
+g = game(AI.random_bot(), AI.center_bot())
 g.start_game(delay=0.1)

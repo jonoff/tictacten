@@ -28,15 +28,21 @@ class return_bot(random_bot):
     ''' Bot that sends player back to the board they came from '''
     pass
 
-class centerBot(random_bot):
+class center_bot(random_bot):
     ''' Bot that always chooses the center option if available '''
-    def move(self, board, bb):
-        if board[1][1] == BLANK:
-            return move(1,1)
-        else:
-            return random_bot().move(board, bb)
+    def move(self, bb, x, y):
+        boards = bb.open_boards()
+        oboards = [(a,b) for a,b in boards if bb[a][a][1][1] == BLANK]
+        if x == None:
+            x,y = oboards.pop()
 
-class greedyBot(random_bot):
+        if bb[x][y][1][1] == BLANK:
+            print 'center board(%d,%d) pos:(%d,%d)' % (x,y,1,1)
+            return move(1, 1, x, y)
+        else:
+            return random_bot().move(bb, x, y)
+
+class greedy_bot(random_bot):
     pass
 
 
